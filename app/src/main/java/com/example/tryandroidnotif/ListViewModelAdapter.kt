@@ -1,6 +1,7 @@
 package com.example.tryandroidnotif
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import android.widget.CheckBox
 import android.widget.TextView
 import com.example.tryandroidnotif.ListViewModel
 import com.example.tryandroidnotif.R
+val sharedPrefFile = "kotlinsharedpreference"
+
 
 class ListViewModelAdapter(val context: Context, val listModelArrayList: ArrayList<ListViewModel>) : BaseAdapter() {
 
@@ -30,8 +33,11 @@ class ListViewModelAdapter(val context: Context, val listModelArrayList: ArrayLi
         vh.tvContent.isChecked = listModelArrayList[position].content!!
 
         vh.tvContent.setOnClickListener {
-            vh.tvTitle.text ="kmbkbjbbkbj" + "Row :$position"
-
+            val sharedPreferences: SharedPreferences = context.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+            editor.putBoolean(vh.tvTitle.text.toString(), vh.tvContent.isChecked)
+            editor.apply()
+            editor.commit()
         }
 
         return view

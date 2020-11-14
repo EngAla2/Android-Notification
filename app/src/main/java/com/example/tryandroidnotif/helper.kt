@@ -15,8 +15,6 @@ import androidx.core.content.ContextCompat.getSystemService
 
         fun createNotificationChannel(id:String, name:String, descriptionText:String, activity:Activity) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                val name = findViewById<TextView>(R.id.name_ch).text.toString()
-//                val descriptionText = findViewById<TextView>(R.id.disc_ch).text.toString()
                 val importance = NotificationManager.IMPORTANCE_DEFAULT
                 val channel = NotificationChannel(id, name, importance).apply {
                     description = descriptionText
