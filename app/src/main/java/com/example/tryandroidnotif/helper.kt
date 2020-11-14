@@ -46,7 +46,6 @@ import androidx.core.content.ContextCompat.getSystemService
             with(NotificationManagerCompat.from(context)) {
                 // notificationId is a unique int for each notification that you must define
                 notify(0, builder.build())
-//                createNotificationChannel(id=id, name=name_ch , descriptionText =disc_ch, activity=activity)
             }
         }
 
@@ -56,32 +55,33 @@ import androidx.core.content.ContextCompat.getSystemService
         }
 
         fun fill_drop_down_list(context: Context, spinner:Spinner, activity: Activity){
-            with(NotificationManagerCompat.from(context)) {
-                var Notifications=getNotificationChannels()
-                var notifications =  mutableListOf<String>()
-                for( a in Notifications){
-                    notifications.add(a.id)
-                }
-//                text.setText(notifications.toString())
-
-                if (spinner != null) {
-                    val adapter = ArrayAdapter(activity,
-                        android.R.layout.simple_spinner_item, notifications)
-                    spinner.adapter = adapter
-
-                    spinner.onItemSelectedListener = object :
-                        AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(parent: AdapterView<*>,
-                                                    view: View, position: Int, id: Long) {
-                            Toast.makeText(activity,
-                                activity.getString(R.string.selected_item) + " " +
-                                        "" + notifications[position], Toast.LENGTH_SHORT).show()
-                        }
-
-                        override fun onNothingSelected(parent: AdapterView<*>) {
-                            // write code to perform some action
-                        }
+            var notifications =get_list_of_all_notifications(context)
+            if (spinner != null) {
+                val adapter = ArrayAdapter(activity,
+                    android.R.layout.simple_spinner_item, notifications)
+                spinner.adapter = adapter
+                spinner.onItemSelectedListener = object :
+                    AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>,
+                                                view: View, position: Int, id: Long) {
+                        Toast.makeText(activity,
+                            activity.getString(R.string.selected_item) + " " +
+                                    "" + notifications[position], Toast.LENGTH_SHORT).show()
+                    }
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                        // write code to perform some action
                     }
                 }
             }
+        }
+
+        fun get_list_of_all_notifications(context: Context): MutableList<String> {
+            var notifications =  mutableListOf<String>()
+            with(NotificationManagerCompat.from(context)) {
+                var Notifications=getNotificationChannels()
+                for( a in Notifications){
+                    notifications.add(a.id)
+                }
+            }
+            return notifications
         }

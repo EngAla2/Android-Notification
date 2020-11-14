@@ -2,12 +2,12 @@ package com.example.tryandroidnotif
 
 class  ListViewModel{
     var id: Int? = null
-    var title: String? = null
-    var content: Boolean? = null
+    var channel_id: String? = null
+    var allow_channel: Boolean? = null
 
-    constructor(id: Int, title: String, content: Boolean) {
+    constructor(id: Int, _channel_id: String, _allow_channel: Boolean) {
         this.id = id
-        this.title = title
-        this.content = content
+        this.channel_id = _channel_id
+        this.allow_channel = _allow_channel
     }
 }

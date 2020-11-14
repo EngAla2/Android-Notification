@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
 import android.widget.TextView
-import com.example.tryandroidnotif.ListViewModel
-import com.example.tryandroidnotif.R
+
 val sharedPrefFile = "kotlinsharedpreference"
 
 
@@ -17,25 +16,25 @@ class ListViewModelAdapter(val context: Context, val listModelArrayList: ArrayLi
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         val view: View?
-        val vh: ViewHolder
+        val channel: ViewHolder
 
         if (convertView == null) {
             val layoutInflater = LayoutInflater.from(context)
             view = layoutInflater.inflate(R.layout.rows, parent, false)
-            vh = ViewHolder(view)
-            view.tag = vh
+            channel = ViewHolder(view)
+            view.tag = channel
         } else {
             view = convertView
-            vh = view.tag as ViewHolder
+            channel = view.tag as ViewHolder
         }
 
-        vh.tvTitle.text = listModelArrayList[position].title
-        vh.tvContent.isChecked = listModelArrayList[position].content!!
+        channel.ChannleId.text = listModelArrayList[position].channel_id
+        channel.allowChannel.isChecked = listModelArrayList[position].allow_channel!!
 
-        vh.tvContent.setOnClickListener {
+        channel.allowChannel.setOnClickListener {
             val sharedPreferences: SharedPreferences = context.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.putBoolean(vh.tvTitle.text.toString(), vh.tvContent.isChecked)
+            editor.putBoolean(channel.ChannleId.text.toString(), channel.allowChannel.isChecked)
             editor.apply()
             editor.commit()
         }
@@ -57,6 +56,6 @@ class ListViewModelAdapter(val context: Context, val listModelArrayList: ArrayLi
 }
 
 private class ViewHolder(view: View?) {
-    val tvTitle: TextView = view?.findViewById<TextView>(R.id.tvTitle) as TextView
-    val tvContent = view?.findViewById<CheckBox>(R.id.tvContent) as CheckBox
+    val ChannleId: TextView = view?.findViewById<TextView>(R.id.channel_id) as TextView
+    val allowChannel = view?.findViewById<CheckBox>(R.id.allow_channel) as CheckBox
 }

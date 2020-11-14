@@ -12,7 +12,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
                 <TextView
-                    android:id="@+id/tvTitle"
+                    android:id="@+id/channel_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -26,7 +26,7 @@
                     android:textStyle="bold" />
 
                 <CheckBox
-                    android:id="@+id/tvContent"
+                    android:id="@+id/allow_channel"
                     android:onClick="check"
                     android:focusable="true"
                     android:clickable="true"
