@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="notif_name" type="id" />
+    <item name="Notify" type="id" />
+    <item name="del_ch" type="id" />
+    <item name="notif_title" type="id" />
+</resources>

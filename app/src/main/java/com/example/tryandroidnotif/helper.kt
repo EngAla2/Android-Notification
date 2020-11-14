@@ -30,7 +30,7 @@ import androidx.core.content.ContextCompat.getSystemService
 
 
 
-        public fun create_notif(context: Context, id:String, Title:String, Text:String, name_ch:String, disc_ch:String, activity:Activity){
+        public fun create_notif(context: Context, id:String, Title:String, Text:String){
             val intent = Intent(context, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
@@ -48,7 +48,7 @@ import androidx.core.content.ContextCompat.getSystemService
             with(NotificationManagerCompat.from(context)) {
                 // notificationId is a unique int for each notification that you must define
                 notify(0, builder.build())
-                createNotificationChannel(id=id, name=name_ch , descriptionText =disc_ch, activity=activity)
+//                createNotificationChannel(id=id, name=name_ch , descriptionText =disc_ch, activity=activity)
             }
         }
 

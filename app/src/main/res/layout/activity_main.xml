@@ -7,121 +7,58 @@
     android:layout_height="match_parent"
     android:layout_gravity="center|center_horizontal"
     android:background="@drawable/unnamed"
-    android:foregroundGravity="fill_horizontal|center_vertical|center|center_horizontal"
     android:scrollbarSize="6dp"
-    app:layout_anchorGravity="center|fill_horizontal|center_vertical"
     tools:context=".MainActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center|fill_horizontal|center_vertical"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="198dp">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:layout_marginTop="25dp"
-            android:gravity="center|fill_horizontal|center_vertical"
-            android:text="Hello to Notifications service!"
-            android:textColor="#000000"
-            android:textColorHighlight="#3E9F5D"
-            android:textSize="30sp" />
+            android:layout_gravity="center"
+            android:layout_margin="60dp"
+            android:gravity="center"
+            android:text="Test Notification App"
+            android:textColor="#FFFFFF"
+            android:textSize="35dp" />
 
-        <EditText
-            android:id="@+id/notif_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:layout_margin="10pt"
-            android:ems="10"
-            android:hint="Notification Title "
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/notif_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:ems="10"
-            android:hint="Notification Text "
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/id_ch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:layout_margin="10pt"
-            android:ems="10"
-            android:hint="Chanel ID"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/disc_ch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:ems="10"
-            android:hint="Chanel description"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/name_ch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:layout_margin="10pt"
-            android:ems="10"
-            android:hint="Chanel name"
-            android:inputType="textPersonName" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:autofillHints="CHANNEL_ID"
-            android:ems="10" />
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="250px" />-->
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Test Notification App"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:foregroundGravity="center_vertical|clip_horizontal|fill_vertical"
-            android:gravity="center|center_horizontal"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <Button
-                android:id="@+id/create_notif"
+                android:id="@+id/client"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="go_to_client"
-                android:text="create channel"
-                tools:ignore="MissingConstraints,OnClick" />
+                android:layout_margin="50px"
+                android:layout_weight="1"
+                android:text="Client" />
 
             <Button
-                android:id="@+id/Notify"
+                android:id="@+id/server"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="create notification"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/del_ch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete channel" />
-
+                android:layout_margin="50px"
+                android:layout_weight="1"
+                android:text="Server" />
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

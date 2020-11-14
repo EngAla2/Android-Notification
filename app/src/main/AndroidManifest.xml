@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TryAndroidNotif">
-        <activity android:name=".DeleteChannel"></activity>
+        <activity android:name=".ServerSide"></activity>
+        <activity android:name=".Client" />
+        <activity android:name=".DeleteChannel" />
         <activity android:name=".CreateChannel" />
         <activity android:name=".CreateNotif" />
         <activity android:name=".MainActivity">
