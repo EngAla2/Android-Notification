@@ -26,9 +26,7 @@ import androidx.core.content.ContextCompat.getSystemService
             }
         }
 
-
-
-        public fun create_notif(context: Context, id:String, Title:String, Text:String){
+        fun create_notif(context: Context, id:String, Title:String, Text:String){
             val intent = Intent(context, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }

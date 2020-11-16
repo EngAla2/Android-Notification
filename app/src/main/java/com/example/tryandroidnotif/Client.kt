@@ -16,7 +16,12 @@ import java.lang.Exception
 import java.text.FieldPosition
 
 class Client : AppCompatActivity() {
-    val sharedPrefFile = "kotlinsharedpreference"
+    private val sharedPrefFile = "kotlinsharedpreference"
+    private val sharedPreferences: SharedPreferences = this.getSharedPreferences(
+        sharedPrefFile,
+        Context.MODE_PRIVATE
+    )
+    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +34,6 @@ class Client : AppCompatActivity() {
             contentResolver,
             Settings.Secure.ANDROID_ID
         )
-        text.setText("***"+androidId.substring(6,9)+"****")
-
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-
 
         btnSave.setOnClickListener(View.OnClickListener {
             startActivity( Intent(this, MainActivity::class.java))
@@ -59,8 +59,8 @@ class Client : AppCompatActivity() {
                 Toast.makeText(applicationContext,
                     "Maybe", Toast.LENGTH_SHORT).show()
             }
-            builder.show()
             editor.putBoolean("first_time", false)
+            builder.show()
         }
 
         val listView = findViewById<ListView>(R.id.dynamic_list)
@@ -74,22 +74,10 @@ class Client : AppCompatActivity() {
 
     fun <ArrayList> getListViewModelList(): ArrayList {
         var listViewModelArrayList = ArrayList<ListViewModel>()
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences(
-            sharedPrefFile,
-            Context.MODE_PRIVATE
-        )
-        with(NotificationManagerCompat.from(this)) {
-            var Notifications = getNotificationChannels()
-            var notifications = mutableListOf<String>()
-            for (a in Notifications) {
-                notifications.add(a.id)
-            }
 
-            for (id in notifications)
-                listViewModelArrayList.add(ListViewModel(1, id, sharedPreferences.getBoolean(id, false)))
-
-
-        }
+        var notifications = get_list_of_all_notifications(this)
+        for (id in notifications)
+            listViewModelArrayList.add(ListViewModel(1, id, sharedPreferences.getBoolean(id, false)))
         return listViewModelArrayList as ArrayList
     }
 }

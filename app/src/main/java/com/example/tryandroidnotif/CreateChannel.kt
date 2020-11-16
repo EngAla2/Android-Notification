@@ -14,17 +14,12 @@ class CreateChannel : AppCompatActivity() {
         val create_ch = findViewById<Button>(R.id.create_channel)
 
         create_ch.setOnClickListener {
-            try {
-                createNotificationChannel(
-                    id = id_ch.text.toString(),
-                    name = findViewById<TextView>(R.id.name_ch).text.toString(),
-                    activity = this,
-                    descriptionText = findViewById<TextView>(R.id.disc_ch).text.toString()
-                )
-            } catch (e: Exception) {
-//                text.setText(e.toString())
-            }
-
+            createNotificationChannel(
+                id = id_ch.text.toString(),
+                name = findViewById<TextView>(R.id.name_ch).text.toString(),
+                activity = this,
+                descriptionText = findViewById<TextView>(R.id.disc_ch).text.toString()
+            )
         }
     }
 }

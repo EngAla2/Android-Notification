@@ -27,17 +27,13 @@ class CreateNotif : AppCompatActivity() {
 
         create_notif.setOnClickListener {
             val id = spinner.getSelectedItem().toString()
-            try {
-                if (sharedPreferences.getBoolean(id, false)) {
-                    create_notif(
-                        this,
-                        id = spinner.getSelectedItem().toString(),
-                        Title = notif_title.text.toString(),
-                        Text = notif_name.text.toString()
-                    )
-                }
-            } catch (e: Exception) {
-//                text.setText(e.toString())
+            if (sharedPreferences.getBoolean(id, false)) {
+                create_notif(
+                    this,
+                    id = spinner.getSelectedItem().toString(),
+                    Title = notif_title.text.toString(),
+                    Text = notif_name.text.toString()
+                )
             }
         }
     }

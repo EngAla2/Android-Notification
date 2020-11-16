@@ -18,13 +18,9 @@ class DeleteChannel : AppCompatActivity() {
         fill_drop_down_list(this, spinner, this)
 
         del_notif_ch.setOnClickListener {
-            try{
             delete_nitif_channel(id=spinner.getSelectedItem().toString(), activity=this)
             startActivity(Intent(this, MainActivity::class.java))
-            }
-            catch (e: Exception){
-                text.setText(e.toString())
-            }
+
         }
     }
 }
